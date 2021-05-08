@@ -22,21 +22,6 @@ namespace DOAN.View
         {
             DoAnEntities a = new DoAnEntities();
             List<Khach> khach = a.Khaches.ToList();
-            listView1.Columns.Add("Mã món");
-            listView1.Columns.Add("Tên món");
-            listView1.Columns.Add("Số lượng");
-            listView1.Columns.Add("Thành tiền");
-            listView1.GridLines = true;
-            foreach(Khach i in khach)
-            {
-                listView1.Items.Add(new ListViewItem(new string[]
-                {
-                    i.MaKhachHang.ToString(),
-                    i.HoTen,
-                    i.CMND.ToString(),
-                    (i.CMND * i.MaKhachHang).ToString()
-                }));
-            };
             dataGridView1.DataSource = a.Khaches.ToList();
         }
 
