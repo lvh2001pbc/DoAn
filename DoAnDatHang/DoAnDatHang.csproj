@@ -55,9 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLL_Items.cs" />
     <Compile Include="BLL\BLL_KhachHang.cs" />
     <Compile Include="BLL\BLL_Login.cs" />
     <Compile Include="BLL\BLL_MonAn.cs" />
+    <Compile Include="BLL\BLL_NhanVien.cs" />
+    <Compile Include="BLL\BLL_HoaDon.cs" />
     <Compile Include="HDDatHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -126,6 +129,8 @@
     <Compile Include="View\Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\HoaDonView.cs" />
+    <Compile Include="View\ItemView.cs" />
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>

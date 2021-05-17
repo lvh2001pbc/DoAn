@@ -6,44 +6,45 @@ using System.Threading.Tasks;
 
 namespace DoAnDatHang.BLL
 {
-    class BLL_KhachHang
+    class BLL_NhanVien
     {
-        private static BLL_KhachHang _Instance;
-        public static BLL_KhachHang Instance
+        private static BLL_NhanVien _Instance;
+        public static BLL_NhanVien Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new BLL_KhachHang();
+                    _Instance = new BLL_NhanVien();
                 }
                 return _Instance;
             }
         }
-        public List<Khach> getAllKhach()
+        public List<NhanVien> getAllNhanVien()
         {
             var db = new DoAnEntities();
-            return db.Khaches.Select(s => s).ToList();
+            return db.NhanViens.Select(s => s).ToList();
         }
 
-        public Khach getKhachByID(int ID)
+        public NhanVien getNhanVienByID(int ID)
         {
-            List<Khach> all = getAllKhach();
-            foreach( Khach i in all)
+            List<NhanVien> all = getAllNhanVien();
+            foreach (NhanVien i in all)
             {
-                if (i.MaKhachHang == ID)
+                if (i.MaNhanVien == ID)
                 {
                     return i;
                 }
             }
             return null;
         }
-        public bool addKhachHang(Khach khach)
+        public bool addNhanVien(NhanVien nvien)
         {
-            try {
+            try
+            {
                 using (var db = new DoAnEntities())
                 {
-                    db.Khaches.Add(khach);
+                    db.NhanViens.Add(nvien);
                     db.SaveChanges();
                 }
             }
@@ -54,19 +55,19 @@ namespace DoAnDatHang.BLL
             return true;
         }
 
-        public bool editKhachHang(Khach khach)
+        public bool editKhachHang(NhanVien nvien)
         {
             try
             {
                 using (var db = new DoAnEntities())
                 {
-                    var result = db.Khaches.Find(khach.MaKhachHang);
+                    var result = db.NhanViens.Find(nvien.MaNhanVien);
                     if (result != null)
                     {
-                        result.HoTen = khach.HoTen;
-                        result.SDT = khach.SDT;
-                        result.DiaChi = khach.DiaChi;
-                        result.Email = khach.Email;
+                        result.HoTen = nvien.HoTen;
+                        result.SDT = nvien.SDT;
+                        result.DiaChi = nvien.DiaChi;
+                        result.Email = nvien.Email;
                         db.SaveChanges();
                     }
                 }
@@ -77,16 +78,16 @@ namespace DoAnDatHang.BLL
             }
             return true;
         }
-        public bool removeKhachHang(Khach khach)
+        public bool removeKhachHang(NhanVien nvien)
         {
             try
             {
                 using (var db = new DoAnEntities())
                 {
-                    var result = db.Khaches.Find(khach.MaKhachHang);
+                    var result = db.NhanViens.Find(nvien.MaNhanVien);
                     if (result != null)
                     {
-                        db.Khaches.Remove(result);
+                        db.NhanViens.Remove(result);
                         db.SaveChanges();
                     }
                 }

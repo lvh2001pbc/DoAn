@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="MaHDDatHang" />
     </Key>
-    <Property Name="MaHDDatHang" Type="int" Nullable="false" />
+    <Property Name="MaHDDatHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKhachHang" Type="int" Nullable="false" />
     <Property Name="MaNhanVien" Type="int" Nullable="false" />
     <Property Name="ThoiGian" Type="datetime" Nullable="false" />
@@ -28,7 +28,7 @@
     <Key>
       <PropertyRef Name="Username" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_Role" Type="int" Nullable="false" />
     <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
@@ -49,7 +49,7 @@
     <Property Name="MaHDDHang" Type="int" Nullable="false" />
     <Property Name="Gia" Type="money" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
-    <Property Name="ThanhTien" Type="money" />
+    <Property Name="ThanhTien" Type="money" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="NhanVien">
     <Key>
@@ -67,7 +67,7 @@
     <Key>
       <PropertyRef Name="MaNuocUong" />
     </Key>
-    <Property Name="MaNuocUong" Type="int" Nullable="false" />
+    <Property Name="MaNuocUong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Gia" Type="money" Nullable="false" />
     <Property Name="TenNuocUong" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SoLuongCon" Type="int" Nullable="false" />
@@ -81,7 +81,7 @@
     <Property Name="MaHDDatHang" Type="int" Nullable="false" />
     <Property Name="Gia" Type="money" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
-    <Property Name="ThanhTien" Type="money" />
+    <Property Name="ThanhTien" Type="money" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

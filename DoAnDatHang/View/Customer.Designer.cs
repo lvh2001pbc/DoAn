@@ -31,10 +31,11 @@ namespace DOAN.View
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@ namespace DOAN.View
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -96,15 +98,16 @@ namespace DOAN.View
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1072, 532);
+            this.tabControl1.Size = new System.Drawing.Size(1395, 566);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.label4);
@@ -114,14 +117,30 @@ namespace DOAN.View
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1064, 503);
+            this.tabPage1.Size = new System.Drawing.Size(1387, 537);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Đặt hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(1268, 475);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 7;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1194, 475);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 17);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Tổng tiền";
+            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(473, 262);
+            this.button5.Location = new System.Drawing.Point(634, 200);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(144, 54);
@@ -131,7 +150,7 @@ namespace DOAN.View
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(473, 200);
+            this.button4.Location = new System.Drawing.Point(634, 138);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(144, 54);
@@ -141,23 +160,13 @@ namespace DOAN.View
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(473, 138);
+            this.button3.Location = new System.Drawing.Point(634, 76);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(144, 54);
             this.button3.TabIndex = 5;
             this.button3.Text = "Xóa Khỏi Đơn Hàng";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(473, 76);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 54);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Thêm Vào Đơn Hàng";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -189,29 +198,36 @@ namespace DOAN.View
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaMonAn,
             this.TenMonAn,
             this.Gia,
             this.SoLuong,
-            this.ThanhTien});
-            this.dataGridView3.Location = new System.Drawing.Point(625, 76);
+            this.ThanhTien,
+            this.Xoa});
+            this.dataGridView3.Location = new System.Drawing.Point(786, 76);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.Size = new System.Drawing.Size(432, 392);
+            this.dataGridView3.Size = new System.Drawing.Size(594, 392);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellValueChanged);
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(17, 76);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(448, 392);
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(609, 392);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -231,7 +247,7 @@ namespace DOAN.View
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1064, 503);
+            this.tabPage2.Size = new System.Drawing.Size(1387, 537);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đơn hàng của tôi";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -345,7 +361,7 @@ namespace DOAN.View
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1064, 503);
+            this.tabPage3.Size = new System.Drawing.Size(1387, 537);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Tài khoản của tôi";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -372,7 +388,7 @@ namespace DOAN.View
             // 
             // txtUpdate
             // 
-            this.txtUpdate.Location = new System.Drawing.Point(529, 334);
+            this.txtUpdate.Location = new System.Drawing.Point(1079, 352);
             this.txtUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUpdate.Name = "txtUpdate";
             this.txtUpdate.Size = new System.Drawing.Size(115, 46);
@@ -388,11 +404,11 @@ namespace DOAN.View
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(431, 69);
+            this.groupBox2.Location = new System.Drawing.Point(862, 87);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(297, 228);
+            this.groupBox2.Size = new System.Drawing.Size(416, 228);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thay đổi mật khẩu";
@@ -402,7 +418,7 @@ namespace DOAN.View
             this.txtXacnhan.Location = new System.Drawing.Point(147, 162);
             this.txtXacnhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtXacnhan.Name = "txtXacnhan";
-            this.txtXacnhan.Size = new System.Drawing.Size(100, 22);
+            this.txtXacnhan.Size = new System.Drawing.Size(206, 22);
             this.txtXacnhan.TabIndex = 23;
             // 
             // txtMKmoi
@@ -410,7 +426,7 @@ namespace DOAN.View
             this.txtMKmoi.Location = new System.Drawing.Point(147, 112);
             this.txtMKmoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKmoi.Name = "txtMKmoi";
-            this.txtMKmoi.Size = new System.Drawing.Size(100, 22);
+            this.txtMKmoi.Size = new System.Drawing.Size(206, 22);
             this.txtMKmoi.TabIndex = 22;
             // 
             // txtMKcu
@@ -418,7 +434,7 @@ namespace DOAN.View
             this.txtMKcu.Location = new System.Drawing.Point(147, 59);
             this.txtMKcu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKcu.Name = "txtMKcu";
-            this.txtMKcu.Size = new System.Drawing.Size(100, 22);
+            this.txtMKcu.Size = new System.Drawing.Size(206, 22);
             this.txtMKcu.TabIndex = 21;
             // 
             // label1
@@ -462,7 +478,7 @@ namespace DOAN.View
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(349, 310);
+            this.groupBox1.Size = new System.Drawing.Size(632, 310);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tài khoản";
@@ -472,7 +488,7 @@ namespace DOAN.View
             this.txtEmail.Location = new System.Drawing.Point(168, 225);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(135, 22);
+            this.txtEmail.Size = new System.Drawing.Size(333, 22);
             this.txtEmail.TabIndex = 18;
             // 
             // txtAddress
@@ -480,7 +496,7 @@ namespace DOAN.View
             this.txtAddress.Location = new System.Drawing.Point(168, 166);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(135, 22);
+            this.txtAddress.Size = new System.Drawing.Size(333, 22);
             this.txtAddress.TabIndex = 17;
             // 
             // txtSDT
@@ -488,7 +504,7 @@ namespace DOAN.View
             this.txtSDT.Location = new System.Drawing.Point(168, 113);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(135, 22);
+            this.txtSDT.Size = new System.Drawing.Size(333, 22);
             this.txtSDT.TabIndex = 16;
             // 
             // txtName
@@ -496,7 +512,7 @@ namespace DOAN.View
             this.txtName.Location = new System.Drawing.Point(168, 55);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(135, 22);
+            this.txtName.Size = new System.Drawing.Size(333, 22);
             this.txtName.TabIndex = 15;
             // 
             // label6
@@ -541,7 +557,7 @@ namespace DOAN.View
             this.MaMonAn.MinimumWidth = 6;
             this.MaMonAn.Name = "MaMonAn";
             this.MaMonAn.ReadOnly = true;
-            this.MaMonAn.Width = 125;
+            this.MaMonAn.Width = 107;
             // 
             // TenMonAn
             // 
@@ -549,7 +565,7 @@ namespace DOAN.View
             this.TenMonAn.MinimumWidth = 6;
             this.TenMonAn.Name = "TenMonAn";
             this.TenMonAn.ReadOnly = true;
-            this.TenMonAn.Width = 125;
+            this.TenMonAn.Width = 113;
             // 
             // Gia
             // 
@@ -557,14 +573,14 @@ namespace DOAN.View
             this.Gia.MinimumWidth = 6;
             this.Gia.Name = "Gia";
             this.Gia.ReadOnly = true;
-            this.Gia.Width = 125;
+            this.Gia.Width = 59;
             // 
             // SoLuong
             // 
             this.SoLuong.HeaderText = "Số lượng";
             this.SoLuong.MinimumWidth = 6;
             this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Width = 125;
+            this.SoLuong.Width = 93;
             // 
             // ThanhTien
             // 
@@ -572,13 +588,23 @@ namespace DOAN.View
             this.ThanhTien.MinimumWidth = 6;
             this.ThanhTien.Name = "ThanhTien";
             this.ThanhTien.ReadOnly = true;
-            this.ThanhTien.Width = 125;
+            this.ThanhTien.Width = 105;
+            // 
+            // Xoa
+            // 
+            this.Xoa.HeaderText = "Xoá";
+            this.Xoa.MinimumWidth = 6;
+            this.Xoa.Name = "Xoa";
+            this.Xoa.ReadOnly = true;
+            this.Xoa.Text = "X";
+            this.Xoa.UseColumnTextForButtonValue = true;
+            this.Xoa.Width = 39;
             // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1096, 557);
+            this.ClientSize = new System.Drawing.Size(1419, 585);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Customer";
@@ -628,7 +654,6 @@ namespace DOAN.View
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
@@ -646,10 +671,13 @@ namespace DOAN.View
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMonAn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMonAn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private System.Windows.Forms.DataGridViewButtonColumn Xoa;
     }
 }

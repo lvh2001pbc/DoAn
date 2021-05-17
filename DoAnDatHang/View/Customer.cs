@@ -80,11 +80,33 @@ namespace DOAN.View
                     if (Convert.ToInt32(i.Cells["MaMonAn"].Value) == Convert.ToInt32(a.Rows[e.RowIndex].Cells["MaMonAn"].Value))
                     {
                         i.Cells["SoLuong"].Value = Convert.ToInt32(i.Cells["SoLuong"].Value) + 1;
+                        SetThanhTien();
                         return;
                     }
                 }
                 dataGridView3.Rows.Add(mon.MaMonAn,mon.TenMonAn,mon.Gia,1,mon.Gia);
+                SetThanhTien();
             }
+        }
+        private void SetThanhTien()
+        {
+            double b = 0;
+            try
+            {
+                for (int i = 0; i < dataGridView3.Rows.Count; i++)
+                {
+                    if (Convert.ToDouble(dataGridView3.Rows[i].Cells["ThanhTien"].Value) != null)
+                    {
+                        b += Convert.ToDouble(dataGridView3.Rows[i].Cells["ThanhTien"].Value);
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+            textBox3.Text = b.ToString();
         }
 
         private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +116,7 @@ namespace DOAN.View
             {
                 a.Rows[e.RowIndex].Cells["ThanhTien"].Value = Convert.ToDouble(a.Rows[e.RowIndex].Cells["Gia"].Value) * Convert.ToInt32(a.Rows[e.RowIndex].Cells["SoLuong"].Value);
             }
+            SetThanhTien();
         }
     }
 }

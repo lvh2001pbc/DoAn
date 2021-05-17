@@ -30,7 +30,7 @@
     <EntitySetMapping Name="Logins">
       <EntityTypeMapping TypeName="DoAnModel.Login">
         <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>

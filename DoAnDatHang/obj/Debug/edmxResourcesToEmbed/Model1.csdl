@@ -34,11 +34,11 @@
     <Key>
       <PropertyRef Name="Username" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Khaches" Relationship="Self.FK_Khach_Login" FromRole="Login" ToRole="Khach" />
     <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_Login" FromRole="Login" ToRole="NhanVien" />
+    <Property Name="ID_Role" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="MonAn">
     <Key>

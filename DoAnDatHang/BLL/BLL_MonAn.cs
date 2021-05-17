@@ -29,5 +29,22 @@ namespace DoAnDatHang.BLL
         {
             return db.MonAns.Find(Id);
         }
+        public bool addMonAnHDDatHang(List<MonAn_HDDatHang> list)
+        {
+            try
+            {
+                using (var db = new DoAnEntities())
+                {
+                    db.MonAn_HDDatHang.AddRange(list);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }

@@ -24,7 +24,16 @@ namespace DoAnDatHang.BLL
         {
             using (var db = new DoAnEntities())
             {
-                return db.Khaches.Where(s => s.Username.Equals(login.Username)).Select(s => s).ToList()[0];
+                return db.Khaches.Find(login.Username);
+            }
+            return null;
+        }
+        public NhanVien getNhanVien(Login login)
+        {
+            using (var db = new DoAnEntities())
+            {
+                Login log = db.Logins.Find(login.Username);
+                return log.NhanViens.Single();
             }
             return null;
         }
@@ -45,9 +54,55 @@ namespace DoAnDatHang.BLL
             Login user = getLoginByUsername(username);
             if (user != null && user.Password.Equals(password))
             {
-                return user.ID;
+                return user.ID_Role;
             }
             else return -1;
+        }
+
+        public bool addLogin(Login login)
+        {
+            try
+            {
+                using( var db = new DoAnEntities())
+                {
+                    db.Logins.Add(login);
+                    db.SaveChanges();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool removeLogin(Login login)
+        {
+            try
+            {
+                using(var db = new DoAnEntities())
+                {
+                    db.Logins.Remove(login);
+                    db.SaveChanges();
+                }
+            }
+            catch{
+                return false;
+            }
+            return true;
+        }
+        public bool editLogin(Login login)
+        {
+            using(var db = new DoAnEntities())
+            {
+                var result = db.Logins.SingleOrDefault(s => s.Username.Equals(login.Username));
+                if (result != null)
+                {
+                    result.Password = login.Password;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }
