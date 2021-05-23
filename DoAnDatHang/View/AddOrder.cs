@@ -14,9 +14,11 @@ namespace DOAN.View
 {
     public partial class AddOrder : Form
     {
-        public AddOrder()
+        int ID;
+        public AddOrder(int id = 0)
         {
             InitializeComponent();
+            ID = id;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -44,6 +46,14 @@ namespace DOAN.View
             comboBox1.DisplayMember = "HoTen";
             comboBox2.DataSource = BLL_NhanVien.Instance.getAllNhanVien();
             comboBox2.DisplayMember = "HoTen";
+            if (ID != 0)
+            {
+                foreach (var i in BLL_MonAn.Instance.GetMonAn_HDDatHang(ID))
+                {
+                    MonAn mon = BLL_MonAn.Instance.getMonAnByID(i.MaMonAn);
+                    dataGridView2.Rows.Add(ID, mon.TenMonAn, i.Gia, i.SoLuong, i.ThanhTien);
+                }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -89,16 +99,18 @@ namespace DOAN.View
         private void button5_Click(object sender, EventArgs e)
         {
             List<MonAn_HDDatHang> mon = new List<MonAn_HDDatHang>();
-            HDDatHang hoadon = new HDDatHang
+            if (ID == 0)
             {
-                ThoiGian = DateTime.Now,
-                MaNhanVien = (comboBox2.SelectedItem as NhanVien).MaNhanVien,
-                TrangThai = true,
-                MaKhachHang = (comboBox1.SelectedItem as Khach).MaKhachHang
-            };
-            int ma = BLL_HoaDon.Instance.createHoaDon(hoadon);
-            foreach (DataGridViewRow i in dataGridView2.Rows)
-            {
+                HDDatHang hoadon = new HDDatHang
+                {
+                    ThoiGian = DateTime.Now,
+                    MaNhanVien = (comboBox2.SelectedItem as NhanVien).MaNhanVien,
+                    TrangThai = true,
+                    MaKhachHang = (comboBox1.SelectedItem as Khach).MaKhachHang
+                };
+                int ma = BLL_HoaDon.Instance.createHoaDon(hoadon);
+                foreach (DataGridViewRow i in dataGridView2.Rows)
+                {
                     mon.Add(new MonAn_HDDatHang
                     {
                         MaMonAn = Convert.ToInt32(i.Cells["MaMonAn"].Value),
@@ -106,8 +118,22 @@ namespace DOAN.View
                         SoLuong = Convert.ToInt32(i.Cells["SoLuong"].Value),
                         MaHDDHang = ma
                     });
+                }
+                BLL_MonAn.Instance.addMonAnHDDatHang(mon);
+            } else
+            {
+                foreach (DataGridViewRow i in dataGridView2.Rows)
+                {
+                    mon.Add(new MonAn_HDDatHang
+                    {
+                        MaMonAn = Convert.ToInt32(i.Cells["MaMonAn"].Value),
+                        Gia = Convert.ToInt32(i.Cells["Gia"].Value),
+                        SoLuong = Convert.ToInt32(i.Cells["SoLuong"].Value),
+                        MaHDDHang = ID
+                    });
+                }
+                BLL_MonAn.Instance.editMonAnHDDatHang(mon);
             }
-            BLL_MonAn.Instance.addMonAnHDDatHang(mon);
             MessageBox.Show("Thanh cong");
         }
     }
