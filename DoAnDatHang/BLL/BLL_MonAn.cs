@@ -46,5 +46,43 @@ namespace DoAnDatHang.BLL
                 return false;
             }
         }
+        public void removeMonAnHDDatHangbyID(int id)
+        {
+            using(var db = new DoAnEntities())
+            {
+                foreach (var i in GetMonAn_HDDatHang(id))
+                {
+                    db.MonAn_HDDatHang.Attach(i);
+                    db.MonAn_HDDatHang.Remove(i);
+                }
+                db.SaveChanges();
+            }
+        }
+        public bool editMonAnHDDatHang(List<MonAn_HDDatHang> list)
+        {
+            try
+            {
+                using (var db = new DoAnEntities())
+                {
+                    removeMonAnHDDatHangbyID(list[0].MaHDDHang);
+                    db.MonAn_HDDatHang.AddRange(list);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public List<MonAn_HDDatHang> GetMonAn_HDDatHang(int id)
+        {
+            using (var db = new DoAnEntities())
+            {
+                return db.MonAn_HDDatHang.Where(s => s.MaHDDHang == id).ToList();
+            }
+        }
     }
 }
