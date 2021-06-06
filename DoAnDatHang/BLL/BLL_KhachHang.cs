@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnDatHang.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,23 +21,28 @@ namespace DoAnDatHang.BLL
                 return _Instance;
             }
         }
-        public List<Khach> getAllKhach()
+        public List<KhachView> getAllKhach()
         {
-            var db = new DoAnEntities();
-            return db.Khaches.Select(s => s).ToList();
+            using (var db = new DoAnEntities())
+            {
+                return db.Khaches.Select(s => new KhachView
+                {
+                    HoTen = s.HoTen,
+                    SDT = s.SDT,
+                    CMND = s.CMND,
+                    DiaChi = s.DiaChi,
+                    Email = s.Email,
+                    MaKhachHang = s.MaKhachHang
+                }).ToList();
+            }
         }
 
         public Khach getKhachByID(int ID)
         {
-            List<Khach> all = getAllKhach();
-            foreach( Khach i in all)
+            using(var db = new DoAnEntities())
             {
-                if (i.MaKhachHang == ID)
-                {
-                    return i;
-                }
+                return db.Khaches.Find(ID);
             }
-            return null;
         }
         public bool addKhachHang(Khach khach)
         {
@@ -96,6 +102,21 @@ namespace DoAnDatHang.BLL
                 return false;
             }
             return true;
+        }
+        public List<KhachView> getKhach(int id = 0, string name = "")
+        {
+            using( var db = new DoAnEntities())
+            {
+                return db.Khaches.Where(s => (id == 0 || s.MaKhachHang == id) && s.HoTen.Contains(name)).Select(s => new KhachView
+                {
+                    HoTen = s.HoTen,
+                    SDT = s.SDT,
+                    CMND = s.CMND,
+                    DiaChi = s.DiaChi,
+                    Email = s.Email,
+                    MaKhachHang = s.MaKhachHang
+                }).ToList();
+            }
         }
     }
 }

@@ -6,7 +6,6 @@
     </Key>
     <Property Name="MaHDDatHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaKhachHang" Type="int" Nullable="false" />
-    <Property Name="MaNhanVien" Type="int" Nullable="false" />
     <Property Name="ThoiGian" Type="datetime" Nullable="false" />
     <Property Name="ThanhTien" Type="money" Nullable="false" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
@@ -105,18 +104,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HDDatHang_NhanVien">
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-    <End Role="HDDatHang" Type="Self.HDDatHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhanVien">
-        <PropertyRef Name="MaNhanVien" />
-      </Principal>
-      <Dependent Role="HDDatHang">
-        <PropertyRef Name="MaNhanVien" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Khach_Login">
     <End Role="Login" Type="Self.Login" Multiplicity="1" />
     <End Role="Khach" Type="Self.Khach" Multiplicity="*" />
@@ -201,10 +188,6 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_HDDatHang_Khach" Association="Self.FK_HDDatHang_Khach">
       <End Role="Khach" EntitySet="Khach" />
-      <End Role="HDDatHang" EntitySet="HDDatHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HDDatHang_NhanVien" Association="Self.FK_HDDatHang_NhanVien">
-      <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="HDDatHang" EntitySet="HDDatHang" />
     </AssociationSet>
     <AssociationSet Name="FK_Khach_Login" Association="Self.FK_Khach_Login">

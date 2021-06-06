@@ -15,6 +15,8 @@ namespace DOAN.View
     public partial class AddOrder : Form
     {
         int ID;
+        public delegate void Del();
+        public Del a;
         public AddOrder(int id = 0)
         {
             InitializeComponent();
@@ -27,20 +29,38 @@ namespace DOAN.View
             List<Khach> khach = a.Khaches.ToList();
             dataGridView1.DataSource = a.Khaches.ToList();
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            DataGridView a = (sender as DataGridView);
+            if (a.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                NuocUong mon = BLL_NuocUong.Instance.getNuocByID(Convert.ToInt32(a.Rows[e.RowIndex].Cells["MaNuocUong"].Value));
+                foreach (DataGridViewRow i in dataGridView4.Rows)
+                {
+                    if (Convert.ToInt32(i.Cells["MaNuocUong"].Value) == Convert.ToInt32(a.Rows[e.RowIndex].Cells["MaNuocUong"].Value))
+                    {
+                        i.Cells["SoLuongNuoc"].Value = Convert.ToInt32(i.Cells["SoLuongNuoc"].Value) + 1;
+                        //SetThanhTien();
+                        return;
+                    }
+                }
+                dataGridView4.Rows.Add(mon.MaNuocUong, mon.TenNuocUong, mon.Gia, 1, mon.Gia);
+                //SetThanhTien();
+            }
         }
-
         private void AddOrder_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = BLL_MonAn.Instance.getAllMonAn();
-            dataGridView1.Columns["MonAn_HDDatHang"].Visible = false;
+            dataGridView1.DataSource = BLL_MonAn.Instance.getAllMonAnView();
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.Text = "Thêm";
             buttonColumn.HeaderText = "Thêm";
             buttonColumn.UseColumnTextForButtonValue = true;
+            dataGridView5.DataSource = BLL_NuocUong.Instance.getAllNuocView();
+            DataGridViewButtonColumn buttonColumn1 = new DataGridViewButtonColumn();
+            buttonColumn1.Text = "Thêm";
+            buttonColumn1.HeaderText = "Thêm";
+            buttonColumn1.UseColumnTextForButtonValue = true;
+            dataGridView5.Columns.Add(buttonColumn1);
             dataGridView1.Columns.Add(buttonColumn);
             comboBox1.DataSource = BLL_KhachHang.Instance.getAllKhach();
             comboBox1.DisplayMember = "HoTen";
@@ -51,7 +71,12 @@ namespace DOAN.View
                 foreach (var i in BLL_MonAn.Instance.GetMonAn_HDDatHang(ID))
                 {
                     MonAn mon = BLL_MonAn.Instance.getMonAnByID(i.MaMonAn);
-                    dataGridView2.Rows.Add(ID, mon.TenMonAn, i.Gia, i.SoLuong, i.ThanhTien);
+                    dataGridView2.Rows.Add(mon.MaMonAn, mon.TenMonAn, i.Gia, i.SoLuong, i.ThanhTien);
+                }
+                foreach (var i in BLL_NuocUong.Instance.getNuocUong_HDDatHang(ID))
+                {
+                    NuocUong nuoc = BLL_NuocUong.Instance.getNuocByID(i.MaNuocUong);
+                    dataGridView4.Rows.Add(nuoc.MaNuocUong, nuoc.TenNuocUong, nuoc.Gia, i.SoLuong, i.ThanhTien);
                 }
             }
         }
@@ -85,6 +110,10 @@ namespace DOAN.View
             }
             //SetThanhTien();
         }
+        private void dataGridView5_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -104,7 +133,7 @@ namespace DOAN.View
                 HDDatHang hoadon = new HDDatHang
                 {
                     ThoiGian = DateTime.Now,
-                    MaNhanVien = (comboBox2.SelectedItem as NhanVien).MaNhanVien,
+                 //   MaNhanVien = (comboBox2.SelectedItem as NhanVien).MaNhanVien,
                     TrangThai = true,
                     MaKhachHang = (comboBox1.SelectedItem as Khach).MaKhachHang
                 };
@@ -135,6 +164,7 @@ namespace DOAN.View
                 BLL_MonAn.Instance.editMonAnHDDatHang(mon);
             }
             MessageBox.Show("Thanh cong");
+            a();
         }
     }
 }

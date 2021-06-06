@@ -43,8 +43,18 @@ namespace DOAN.View
             this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.MaNuocUong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNuocUong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTienNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,13 +93,13 @@ namespace DOAN.View
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(673, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(673, 277);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1257, 441);
+            this.button5.Location = new System.Drawing.Point(1257, 690);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(120, 46);
@@ -114,9 +124,10 @@ namespace DOAN.View
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(658, 320);
+            this.dataGridView2.Size = new System.Drawing.Size(658, 277);
             this.dataGridView2.TabIndex = 7;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellValueChanged);
             // 
             // MaMonAn
             // 
@@ -183,11 +194,101 @@ namespace DOAN.View
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 8;
             // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaNuocUong,
+            this.TenNuocUong,
+            this.GiaNuoc,
+            this.SoLuongNuoc,
+            this.ThanhTienNuoc,
+            this.dataGridViewButtonColumn1});
+            this.dataGridView4.Location = new System.Drawing.Point(719, 398);
+            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.RowHeadersWidth = 51;
+            this.dataGridView4.Size = new System.Drawing.Size(658, 262);
+            this.dataGridView4.TabIndex = 10;
+            this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // MaNuocUong
+            // 
+            this.MaNuocUong.HeaderText = "Mã nước uống";
+            this.MaNuocUong.MinimumWidth = 6;
+            this.MaNuocUong.Name = "MaNuocUong";
+            this.MaNuocUong.ReadOnly = true;
+            this.MaNuocUong.Width = 117;
+            // 
+            // TenNuocUong
+            // 
+            this.TenNuocUong.HeaderText = "Tên nước uống";
+            this.TenNuocUong.MinimumWidth = 6;
+            this.TenNuocUong.Name = "TenNuocUong";
+            this.TenNuocUong.ReadOnly = true;
+            this.TenNuocUong.Width = 122;
+            // 
+            // GiaNuoc
+            // 
+            this.GiaNuoc.HeaderText = "Giá";
+            this.GiaNuoc.MinimumWidth = 6;
+            this.GiaNuoc.Name = "GiaNuoc";
+            this.GiaNuoc.ReadOnly = true;
+            this.GiaNuoc.Width = 59;
+            // 
+            // SoLuongNuoc
+            // 
+            this.SoLuongNuoc.DataPropertyName = "SoLuongNuoc";
+            this.SoLuongNuoc.HeaderText = "Số lượng";
+            this.SoLuongNuoc.MinimumWidth = 6;
+            this.SoLuongNuoc.Name = "SoLuongNuoc";
+            this.SoLuongNuoc.Width = 86;
+            // 
+            // ThanhTienNuoc
+            // 
+            this.ThanhTienNuoc.HeaderText = "Thành tiền";
+            this.ThanhTienNuoc.MinimumWidth = 6;
+            this.ThanhTienNuoc.Name = "ThanhTienNuoc";
+            this.ThanhTienNuoc.ReadOnly = true;
+            this.ThanhTienNuoc.Width = 97;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "Xoá";
+            this.dataGridViewButtonColumn1.MinimumWidth = 6;
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Text = "X";
+            this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
+            this.dataGridViewButtonColumn1.Width = 39;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.AllowUserToAddRows = false;
+            this.dataGridView5.AllowUserToDeleteRows = false;
+            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(38, 398);
+            this.dataGridView5.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView5.MultiSelect = false;
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.RowHeadersWidth = 51;
+            this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView5.Size = new System.Drawing.Size(673, 262);
+            this.dataGridView5.TabIndex = 11;
+            this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
+            // 
             // AddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1390, 527);
+            this.ClientSize = new System.Drawing.Size(1422, 749);
+            this.Controls.Add(this.dataGridView4);
+            this.Controls.Add(this.dataGridView5);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView2);
@@ -202,6 +303,8 @@ namespace DOAN.View
             this.Load += new System.EventHandler(this.AddOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +326,13 @@ namespace DOAN.View
         private System.Windows.Forms.DataGridViewButtonColumn Xoa;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNuocUong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNuocUong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaNuoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongNuoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTienNuoc;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridView dataGridView5;
     }
 }

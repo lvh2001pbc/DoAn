@@ -34,6 +34,8 @@ namespace DOAN
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSortCustomer = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnSearchKH = new System.Windows.Forms.Button();
             this.txtSearchName = new System.Windows.Forms.TextBox();
@@ -55,6 +57,7 @@ namespace DOAN
             this.btnAdđon = new System.Windows.Forms.Button();
             this.dtgvDon = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSuaDonXacNhan = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtTimHD = new System.Windows.Forms.TextBox();
             this.btnXoadon = new System.Windows.Forms.Button();
@@ -68,7 +71,9 @@ namespace DOAN
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.btnTongdon = new System.Windows.Forms.Button();
+            this.txtThanhtienDon = new System.Windows.Forms.TextBox();
             this.txtTongdon = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUpdatdonhang = new System.Windows.Forms.Button();
             this.btnSortdon = new System.Windows.Forms.Button();
@@ -107,7 +112,10 @@ namespace DOAN
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnSuaDonXacNhan = new System.Windows.Forms.Button();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_KH)).BeginInit();
@@ -143,6 +151,8 @@ namespace DOAN
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnSortCustomer);
+            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.btnSearchKH);
             this.tabPage1.Controls.Add(this.txtSearchName);
@@ -161,6 +171,24 @@ namespace DOAN
             this.tabPage1.Text = "Khách hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnSortCustomer
+            // 
+            this.btnSortCustomer.Location = new System.Drawing.Point(856, 21);
+            this.btnSortCustomer.Name = "btnSortCustomer";
+            this.btnSortCustomer.Size = new System.Drawing.Size(75, 23);
+            this.btnSortCustomer.TabIndex = 9;
+            this.btnSortCustomer.Text = "Sắp xếp";
+            this.btnSortCustomer.UseVisualStyleBackColor = true;
+            this.btnSortCustomer.Click += new System.EventHandler(this.btnSortCustomer_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(728, 23);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 8;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -173,17 +201,18 @@ namespace DOAN
             // 
             // btnSearchKH
             // 
-            this.btnSearchKH.Location = new System.Drawing.Point(592, 26);
+            this.btnSearchKH.Location = new System.Drawing.Point(585, 23);
             this.btnSearchKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchKH.Name = "btnSearchKH";
             this.btnSearchKH.Size = new System.Drawing.Size(75, 23);
             this.btnSearchKH.TabIndex = 6;
             this.btnSearchKH.Text = "Tìm kiếm";
             this.btnSearchKH.UseVisualStyleBackColor = true;
+            this.btnSearchKH.Click += new System.EventHandler(this.btnSearchKH_Click);
             // 
             // txtSearchName
             // 
-            this.txtSearchName.Location = new System.Drawing.Point(450, 63);
+            this.txtSearchName.Location = new System.Drawing.Point(479, 23);
             this.txtSearchName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchName.Name = "txtSearchName";
             this.txtSearchName.Size = new System.Drawing.Size(100, 22);
@@ -191,7 +220,7 @@ namespace DOAN
             // 
             // txt_SearchKH
             // 
-            this.txt_SearchKH.Location = new System.Drawing.Point(450, 27);
+            this.txt_SearchKH.Location = new System.Drawing.Point(373, 23);
             this.txt_SearchKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_SearchKH.Name = "txt_SearchKH";
             this.txt_SearchKH.Size = new System.Drawing.Size(100, 22);
@@ -276,6 +305,10 @@ namespace DOAN
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dateTimePicker3);
+            this.tabPage4.Controls.Add(this.dateTimePicker4);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.btnSearchHD);
             this.tabPage4.Controls.Add(this.txtDon);
             this.tabPage4.Controls.Add(this.btnUpdateDon);
@@ -302,6 +335,7 @@ namespace DOAN
             this.btnSearchHD.TabIndex = 7;
             this.btnSearchHD.Text = "Tìm kiếm";
             this.btnSearchHD.UseVisualStyleBackColor = true;
+            this.btnSearchHD.Click += new System.EventHandler(this.btnSearchHD_Click);
             // 
             // txtDon
             // 
@@ -313,7 +347,7 @@ namespace DOAN
             // 
             // btnUpdateDon
             // 
-            this.btnUpdateDon.Location = new System.Drawing.Point(1153, 331);
+            this.btnUpdateDon.Location = new System.Drawing.Point(1156, 346);
             this.btnUpdateDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdateDon.Name = "btnUpdateDon";
             this.btnUpdateDon.Size = new System.Drawing.Size(93, 43);
@@ -324,7 +358,7 @@ namespace DOAN
             // 
             // btnDelDon
             // 
-            this.btnDelDon.Location = new System.Drawing.Point(1153, 244);
+            this.btnDelDon.Location = new System.Drawing.Point(1156, 259);
             this.btnDelDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelDon.Name = "btnDelDon";
             this.btnDelDon.Size = new System.Drawing.Size(93, 43);
@@ -335,7 +369,7 @@ namespace DOAN
             // 
             // btnEditDon
             // 
-            this.btnEditDon.Location = new System.Drawing.Point(1153, 173);
+            this.btnEditDon.Location = new System.Drawing.Point(1156, 188);
             this.btnEditDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditDon.Name = "btnEditDon";
             this.btnEditDon.Size = new System.Drawing.Size(93, 43);
@@ -357,7 +391,7 @@ namespace DOAN
             // 
             // btnAdđon
             // 
-            this.btnAdđon.Location = new System.Drawing.Point(1153, 98);
+            this.btnAdđon.Location = new System.Drawing.Point(1156, 113);
             this.btnAdđon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdđon.Name = "btnAdđon";
             this.btnAdđon.Size = new System.Drawing.Size(93, 43);
@@ -369,7 +403,7 @@ namespace DOAN
             // dtgvDon
             // 
             this.dtgvDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDon.Location = new System.Drawing.Point(19, 71);
+            this.dtgvDon.Location = new System.Drawing.Point(19, 83);
             this.dtgvDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvDon.MultiSelect = false;
             this.dtgvDon.Name = "dtgvDon";
@@ -396,6 +430,17 @@ namespace DOAN
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Đơn chờ xác nhận";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnSuaDonXacNhan
+            // 
+            this.btnSuaDonXacNhan.Location = new System.Drawing.Point(1150, 211);
+            this.btnSuaDonXacNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSuaDonXacNhan.Name = "btnSuaDonXacNhan";
+            this.btnSuaDonXacNhan.Size = new System.Drawing.Size(93, 43);
+            this.btnSuaDonXacNhan.TabIndex = 9;
+            this.btnSuaDonXacNhan.Text = "Sửa";
+            this.btnSuaDonXacNhan.UseVisualStyleBackColor = true;
+            this.btnSuaDonXacNhan.Click += new System.EventHandler(this.btnSuaDonXacNhan_Click);
             // 
             // button1
             // 
@@ -477,7 +522,9 @@ namespace DOAN
             this.tabPage6.Controls.Add(this.dateTimePicker1);
             this.tabPage6.Controls.Add(this.label11);
             this.tabPage6.Controls.Add(this.btnTongdon);
+            this.tabPage6.Controls.Add(this.txtThanhtienDon);
             this.tabPage6.Controls.Add(this.txtTongdon);
+            this.tabPage6.Controls.Add(this.label15);
             this.tabPage6.Controls.Add(this.label2);
             this.tabPage6.Controls.Add(this.btnUpdatdonhang);
             this.tabPage6.Controls.Add(this.btnSortdon);
@@ -538,6 +585,14 @@ namespace DOAN
             this.btnTongdon.Text = "Tổng đơn";
             this.btnTongdon.UseVisualStyleBackColor = true;
             // 
+            // txtThanhtienDon
+            // 
+            this.txtThanhtienDon.Location = new System.Drawing.Point(647, 414);
+            this.txtThanhtienDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtThanhtienDon.Name = "txtThanhtienDon";
+            this.txtThanhtienDon.Size = new System.Drawing.Size(117, 22);
+            this.txtThanhtienDon.TabIndex = 5;
+            // 
             // txtTongdon
             // 
             this.txtTongdon.Location = new System.Drawing.Point(647, 386);
@@ -545,6 +600,15 @@ namespace DOAN
             this.txtTongdon.Name = "txtTongdon";
             this.txtTongdon.Size = new System.Drawing.Size(117, 22);
             this.txtTongdon.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(508, 414);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 17);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Thành tiền";
             // 
             // label2
             // 
@@ -965,16 +1029,42 @@ namespace DOAN
             this.label9.TabIndex = 11;
             this.label9.Text = "Họ tên";
             // 
-            // btnSuaDonXacNhan
+            // dateTimePicker3
             // 
-            this.btnSuaDonXacNhan.Location = new System.Drawing.Point(1150, 211);
-            this.btnSuaDonXacNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSuaDonXacNhan.Name = "btnSuaDonXacNhan";
-            this.btnSuaDonXacNhan.Size = new System.Drawing.Size(93, 43);
-            this.btnSuaDonXacNhan.TabIndex = 9;
-            this.btnSuaDonXacNhan.Text = "Sửa";
-            this.btnSuaDonXacNhan.UseVisualStyleBackColor = true;
-            this.btnSuaDonXacNhan.Click += new System.EventHandler(this.btnSuaDonXacNhan_Click);
+            this.dateTimePicker3.Location = new System.Drawing.Point(93, 43);
+            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker3.TabIndex = 12;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "MM";
+            this.dateTimePicker4.Location = new System.Drawing.Point(93, 11);
+            this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker4.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(32, 51);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(34, 17);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Đến";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(32, 17);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(25, 17);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Từ";
             // 
             // Staff
             // 
@@ -1062,7 +1152,6 @@ namespace DOAN
         private System.Windows.Forms.DateTimePicker dateFromDoanhThu;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtSearchName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtAddress;
@@ -1094,5 +1183,14 @@ namespace DOAN
         private System.Windows.Forms.ComboBox yearFrom;
         private System.Windows.Forms.ComboBox monthFrom;
         private System.Windows.Forms.Button btnSuaDonXacNhan;
+        private System.Windows.Forms.TextBox txtSearchName;
+        private System.Windows.Forms.TextBox txtThanhtienDon;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSortCustomer;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }

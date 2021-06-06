@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DoAnDatHang.View
 {
-    class ItemView
-    {
+    class MonAnView
+    {   
+        public int MaMonAn { get; set; }
         public string TenMonAn { get; set; }
         public decimal Gia { get; set; }
-        public int SoLuong { get; set; }
-        public decimal ThanhTien { get; set; }
     }
 }

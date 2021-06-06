@@ -23,13 +23,11 @@ namespace DoAnDatHang
     
         public int MaHDDatHang { get; set; }
         public int MaKhachHang { get; set; }
-        public int MaNhanVien { get; set; }
         public System.DateTime ThoiGian { get; set; }
         public decimal ThanhTien { get; set; }
         public bool TrangThai { get; set; }
     
         public virtual Khach Khach { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonAn_HDDatHang> MonAn_HDDatHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

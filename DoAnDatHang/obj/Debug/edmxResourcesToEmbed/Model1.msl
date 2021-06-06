@@ -7,7 +7,6 @@
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="MaHDDatHang" ColumnName="MaHDDatHang" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
-          <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
           <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
           <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
         </MappingFragment>

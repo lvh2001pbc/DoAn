@@ -24,9 +24,9 @@ namespace DoAnDatHang.BLL
         {
             using (var db = new DoAnEntities())
             {
-                return db.Khaches.Find(login.Username);
+                db.Logins.Attach(login);
+                return login.Khaches.First();
             }
-            return null;
         }
         public NhanVien getNhanVien(Login login)
         {
@@ -35,7 +35,6 @@ namespace DoAnDatHang.BLL
                 Login log = db.Logins.Find(login.Username);
                 return log.NhanViens.Single();
             }
-            return null;
         }
         public Login getLoginByUsername(string username)
         {

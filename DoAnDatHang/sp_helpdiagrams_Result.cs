@@ -10,18 +10,13 @@
 namespace DoAnDatHang
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NhanVien
+    public partial class sp_helpdiagrams_Result
     {
-        public int MaNhanVien { get; set; }
-        public string HoTen { get; set; }
-        public string DiaChi { get; set; }
-        public string SDT { get; set; }
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public int CMND { get; set; }
-    
-        public virtual Login Login { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

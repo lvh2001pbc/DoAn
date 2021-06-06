@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnDatHang.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,22 @@ namespace DoAnDatHang.BLL
                 return _Instance;
             }
         }
-        public List<MonAn> getAllMonAn()
+        public List<MonAnView> getAllMonAnView()
         {
-            return db.MonAns.ToList();
+            using (var db1 = new DoAnEntities())
+            {
+                List<MonAnView> mon = new List<MonAnView>();
+                foreach (var i in db1.MonAns.ToList())
+                {
+                    mon.Add(new MonAnView
+                    {
+                        MaMonAn = i.MaMonAn,
+                        TenMonAn = i.TenMonAn,
+                        Gia = i.Gia
+                    });
+                }
+                return mon;
+            }
         }
         public MonAn getMonAnByID(int Id)
         {

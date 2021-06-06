@@ -19,9 +19,9 @@ namespace DOAN.View
         {
             InitializeComponent();
             Id = ID;
-            Load();
+            LoadDon();
         }
-        public void Load()
+        public void LoadDon()
         {
             textBox1.Text = Id.ToString();
             textBox1.ReadOnly = true;
