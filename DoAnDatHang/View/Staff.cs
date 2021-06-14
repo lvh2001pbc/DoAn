@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DOAN
@@ -13,6 +14,7 @@ namespace DOAN
     public partial class Staff : Form
     {
         int Id;
+        Thread a;
         public Staff(int id = 0)
         {
             InitializeComponent();
@@ -21,7 +23,44 @@ namespace DOAN
             ShowDon();
             LoadDay();
             LoadCBB();
+            CheckNewDon();
         }
+        public void LoadDtgvDon()
+        {
+            dtgvDon.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(true);
+            dtgvDon.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
+            dtgvDon.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
+            dtgvDon.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgvDon.Columns["ThoiGian"].HeaderText = "Thời gian";
+        }
+        public void LoadDtgvDonxacnhan()
+        {
+            dtgvDonxacnhan.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(false);
+            dtgvDonxacnhan.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
+            dtgvDonxacnhan.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
+            dtgvDonxacnhan.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgvDonxacnhan.Columns["ThoiGian"].HeaderText = "Thời gian";
+        }
+        public void CheckNewDon()
+        {
+            a = new Thread(() => {
+                int prev = BLL_HoaDon.Instance.getAllHoaDonView(false).Count;
+                while (true)
+                {
+                    Thread.Sleep(5000);
+                    int now = BLL_HoaDon.Instance.getAllHoaDonView(false).Count;
+                    if (now > prev)
+                    {
+                        ShowDon();
+                    }
+                }
+            });
+            a.Name = "Check";
+            a.IsBackground = true;
+            a.Start();
+        }
+
+
         public void LoadKhach()
         {
             dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach();
@@ -48,16 +87,17 @@ namespace DOAN
         }
         public void ShowDon()
         {
-            dtgvDon.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(true);
-            dtgvDon.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
-            dtgvDon.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
-            dtgvDon.Columns["ThanhTien"].HeaderText = "Thành tiền";
-            dtgvDon.Columns["ThoiGian"].HeaderText = "Thời gian";
-            dtgvDonxacnhan.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(false);
-            dtgvDonxacnhan.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
-            dtgvDonxacnhan.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
-            dtgvDonxacnhan.Columns["ThanhTien"].HeaderText = "Thành tiền";
-            dtgvDonxacnhan.Columns["ThoiGian"].HeaderText = "Thời gian";
+
+            if (dtgvDon.InvokeRequired)
+            {
+                dtgvDon.Invoke(new MethodInvoker(LoadDtgvDon));
+            }
+            else LoadDtgvDon();
+            if (dtgvDonxacnhan.InvokeRequired)
+            {
+                dtgvDonxacnhan.Invoke(new MethodInvoker(LoadDtgvDonxacnhan));
+            }
+            else LoadDtgvDonxacnhan();
         }
         public void LoadThongTin()
         {
@@ -93,7 +133,7 @@ namespace DOAN
         private void btnSua_Click(object sender, EventArgs e)
         {
             AddCustomer edit = new AddCustomer(true);
-            edit.reset += Show;
+            edit.reset += ShowKhach;
             edit.ShowDialog();
         }
 
@@ -275,7 +315,7 @@ namespace DOAN
                 dtgv_KH.DataSource = BLL_KhachHang.Instance.getKhach(Convert.ToInt32(txt_SearchKH.Text), txtSearchName.Text);
             }
             else
-                dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach();
+                dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach().Where(s => s.HoTen.Contains(txtSearchName.Text)).ToList();
         }
 
         private void btnSearchHD_Click(object sender, EventArgs e)
@@ -283,8 +323,9 @@ namespace DOAN
             if (txtDon.TextLength > 0)
             {
                 int Id = Convert.ToInt32(txtDon.Text);
-                dtgvDon.DataSource = BLL_HoaDon.Instance.GetHoaDonViewContainsID(Id,true);
-            }else
+                dtgvDon.DataSource = BLL_HoaDon.Instance.getHoaDonViewByTime(dateTimePicker4.Value, dateTimePicker3.Value).Where(s => s.MaHoaDon.ToString().Contains(Id.ToString()));
+            }
+            else
             {
                 ShowDon();
             }

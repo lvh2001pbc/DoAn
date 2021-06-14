@@ -107,7 +107,7 @@ namespace DoAnDatHang.BLL
         {
             using( var db = new DoAnEntities())
             {
-                return db.Khaches.Where(s => (id == 0 || s.MaKhachHang == id) && s.HoTen.Contains(name)).Select(s => new KhachView
+                return db.Khaches.Where(s =>  (s.HoTen.Contains(name)) && (id == 0 || s.MaKhachHang == id)).Select(s => new KhachView
                 {
                     HoTen = s.HoTen,
                     SDT = s.SDT,

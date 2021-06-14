@@ -215,5 +215,10 @@ namespace DOAN.View
                 SetThanhTien();
             }
         }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

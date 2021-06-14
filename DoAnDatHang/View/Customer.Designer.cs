@@ -106,7 +106,7 @@ namespace DOAN.View
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1395, 707);
+            this.tabControl1.Size = new System.Drawing.Size(1841, 825);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -125,14 +125,14 @@ namespace DOAN.View
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1387, 678);
+            this.tabPage1.Size = new System.Drawing.Size(1833, 796);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Đặt hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(1124, 637);
+            this.textBox3.Location = new System.Drawing.Point(1568, 740);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 7;
@@ -150,11 +150,11 @@ namespace DOAN.View
             this.SoLuongNuoc,
             this.ThanhTienNuoc,
             this.dataGridViewButtonColumn1});
-            this.dataGridView4.Location = new System.Drawing.Point(707, 348);
+            this.dataGridView4.Location = new System.Drawing.Point(916, 409);
             this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowHeadersWidth = 51;
-            this.dataGridView4.Size = new System.Drawing.Size(673, 262);
+            this.dataGridView4.Size = new System.Drawing.Size(908, 304);
             this.dataGridView4.TabIndex = 8;
             this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             this.dataGridView4.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellValueChanged);
@@ -216,20 +216,20 @@ namespace DOAN.View
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(17, 348);
+            this.dataGridView5.Location = new System.Drawing.Point(14, 409);
             this.dataGridView5.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowHeadersWidth = 51;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView5.Size = new System.Drawing.Size(682, 262);
+            this.dataGridView5.Size = new System.Drawing.Size(894, 304);
             this.dataGridView5.TabIndex = 9;
             this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1050, 637);
+            this.label13.Location = new System.Drawing.Point(1494, 740);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 17);
             this.label13.TabIndex = 6;
@@ -247,7 +247,7 @@ namespace DOAN.View
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1236, 618);
+            this.button5.Location = new System.Drawing.Point(1680, 721);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(144, 54);
@@ -287,11 +287,11 @@ namespace DOAN.View
             this.SoLuong,
             this.ThanhTien,
             this.Xoa});
-            this.dataGridView3.Location = new System.Drawing.Point(707, 76);
+            this.dataGridView3.Location = new System.Drawing.Point(916, 76);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.Size = new System.Drawing.Size(673, 264);
+            this.dataGridView3.Size = new System.Drawing.Size(908, 325);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellValueChanged);
@@ -352,13 +352,13 @@ namespace DOAN.View
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(17, 76);
+            this.dataGridView2.Location = new System.Drawing.Point(14, 76);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(682, 264);
+            this.dataGridView2.Size = new System.Drawing.Size(894, 325);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -378,7 +378,7 @@ namespace DOAN.View
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1387, 678);
+            this.tabPage2.Size = new System.Drawing.Size(1833, 796);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đơn hàng của tôi";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -424,7 +424,7 @@ namespace DOAN.View
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(914, 356);
+            this.button8.Location = new System.Drawing.Point(1685, 341);
             this.button8.Margin = new System.Windows.Forms.Padding(4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(100, 76);
@@ -434,7 +434,7 @@ namespace DOAN.View
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(914, 235);
+            this.button7.Location = new System.Drawing.Point(1685, 220);
             this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 75);
@@ -445,7 +445,7 @@ namespace DOAN.View
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(914, 127);
+            this.button6.Location = new System.Drawing.Point(1685, 112);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 55);
@@ -482,7 +482,7 @@ namespace DOAN.View
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(835, 368);
+            this.dataGridView1.Size = new System.Drawing.Size(1447, 693);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage3
@@ -495,10 +495,11 @@ namespace DOAN.View
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1387, 678);
+            this.tabPage3.Size = new System.Drawing.Size(1833, 796);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Tài khoản của tôi";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // label5
             // 
@@ -612,7 +613,7 @@ namespace DOAN.View
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(632, 310);
+            this.groupBox1.Size = new System.Drawing.Size(632, 309);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tài khoản";
@@ -689,7 +690,8 @@ namespace DOAN.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1419, 732);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1862, 853);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Customer";
