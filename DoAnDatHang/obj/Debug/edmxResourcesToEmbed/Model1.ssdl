@@ -18,7 +18,6 @@
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SDT" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="SoDu" Type="money" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CMND" Type="int" Nullable="false" />
@@ -35,7 +34,7 @@
     <Key>
       <PropertyRef Name="MaMonAn" />
     </Key>
-    <Property Name="MaMonAn" Type="int" Nullable="false" />
+    <Property Name="MaMonAn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Gia" Type="money" Nullable="false" />
     <Property Name="TenMonAn" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>

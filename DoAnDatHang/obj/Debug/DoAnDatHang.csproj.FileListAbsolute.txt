@@ -19,3 +19,4 @@ C:\Users\DELL\source\repos\DoAnDatHang\DoAnDatHang\obj\Debug\DOAN.Staff.resource
 C:\Users\DELL\source\repos\DoAnDatHang\DoAnDatHang\obj\Debug\DOAN.View.AddOrder.resources
 C:\Users\DELL\source\repos\DoAnDatHang\DoAnDatHang\obj\Debug\DOAN.View.CheckOrder.resources
 C:\Users\DELL\source\repos\DoAnDatHang\DoAnDatHang\obj\Debug\DOAN.View.OrderDetail.resources
+C:\Users\DELL\source\repos\DoAnDatHang\DoAnDatHang\obj\Debug\DoAnDatHang.View.MonAnDetail.resources

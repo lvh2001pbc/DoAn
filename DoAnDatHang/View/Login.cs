@@ -43,6 +43,7 @@ namespace DOAN
                 var user = BLL_Login.Instance.getLoginByUsername(textBox1.Text);
                 var khach = BLL_Login.Instance.getKhach(user);
                 Customer form = new Customer(khach.MaKhachHang);
+                form.WindowState = FormWindowState.Maximized;
                 form.Show();
                 form.FormClosing += CloseForm;
                 this.Hide();
@@ -52,11 +53,17 @@ namespace DOAN
                 var user = BLL_Login.Instance.getLoginByUsername(textBox1.Text);
                 var nvien = BLL_Login.Instance.getNhanVien(user);
                 Staff form = new Staff(nvien.MaNhanVien);
+                form.WindowState = FormWindowState.Maximized;
                 form.Show();
                 form.FormClosing += CloseForm;
                 this.Hide();
             }
             else MessageBox.Show("Sai tai khoan hoac mat khau");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

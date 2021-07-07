@@ -55,7 +55,7 @@ namespace DoAnDatHang.BLL
             return true;
         }
 
-        public bool editKhachHang(NhanVien nvien)
+        public bool editNhanVien(NhanVien nvien)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace DoAnDatHang.BLL
             }
             return true;
         }
-        public bool removeKhachHang(NhanVien nvien)
+        public bool removeNhanVien(NhanVien nvien)
         {
             try
             {

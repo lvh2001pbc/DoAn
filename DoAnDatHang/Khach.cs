@@ -24,7 +24,6 @@ namespace DoAnDatHang
         public string HoTen { get; set; }
         public string DiaChi { get; set; }
         public string SDT { get; set; }
-        public decimal SoDu { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public int CMND { get; set; }

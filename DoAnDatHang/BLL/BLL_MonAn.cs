@@ -98,5 +98,34 @@ namespace DoAnDatHang.BLL
                 return db.MonAn_HDDatHang.Where(s => s.MaHDDHang == id).ToList();
             }
         }
+
+        public void addMonAn(MonAn mon)
+        {
+            using(var db = new DoAnEntities())
+            {
+                db.MonAns.Add(mon);
+                db.SaveChanges();
+            }
+        }
+
+        public void suaMonAn(int Id, MonAn sua)
+        {
+            using (var db = new DoAnEntities())
+            {
+                MonAn mon = db.MonAns.Find(Id);
+                mon.Gia = sua.Gia;
+                mon.TenMonAn = sua.TenMonAn;
+                db.SaveChanges();
+            }
+        }
+        public void xoaMonAn(int Id)
+        {
+            using (var db = new DoAnEntities())
+            {
+                MonAn mon = db.MonAns.Find(Id);
+                db.MonAns.Remove(mon);
+                db.SaveChanges();
+            }
+        }
     }
 }

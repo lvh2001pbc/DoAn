@@ -25,6 +25,12 @@ namespace DOAN
             LoadCBB();
             CheckNewDon();
         }
+        public void LoadDtgvMonAn()
+        {
+            if (comboBoxMonAn.SelectedIndex == 0)
+                dtgMonAn.DataSource = BLL_MonAn.Instance.getAllMonAnView();
+            else dtgMonAn.DataSource = BLL_NuocUong.Instance.getAllNuocView();
+        }
         public void LoadDtgvDon()
         {
             dtgvDon.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(true);
@@ -106,6 +112,11 @@ namespace DOAN
             txtEmail.Text = staff.Email;
             txtAddress.Text = staff.DiaChi;
             txtSDT.Text = staff.SDT;
+            Login log = BLL_Login.Instance.getLoginByUsername(staff.Username);
+            if (log.ID_Role != 0)
+            {
+                tabControl1.TabPages.Remove(tabPage10);
+            }
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -132,9 +143,13 @@ namespace DOAN
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            AddCustomer edit = new AddCustomer(true);
-            edit.reset += ShowKhach;
-            edit.ShowDialog();
+            if (dtgv_KH.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dtgv_KH.SelectedRows[0].Cells["MaKhachHang"].Value);
+                AddCustomer edit = new AddCustomer(true,false,Id);
+                edit.reset += ShowKhach;
+                edit.ShowDialog();
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -343,6 +358,77 @@ namespace DOAN
             if (comboBox1.SelectedIndex == 1) a.Sort(KhachView.CompareByMa);
             else a.Sort(KhachView.CompareByTen);
             dtgv_KH.DataSource = a;
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (dtgMonAn.SelectedRows.Count > 0)
+            {
+                string cell = comboBoxMonAn.SelectedIndex == 0 ? "MaMonAn" : "MaNuocUong";
+                int id_mon = Convert.ToInt32(dtgMonAn.SelectedRows[0].Cells[cell].Value);
+                if (comboBoxMonAn.SelectedIndex == 0) BLL_MonAn.Instance.xoaMonAn(id_mon);
+                else BLL_NuocUong.Instance.deleteNuocUong(id_mon);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadDtgvMonAn();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+                MonAnDetail ma = new MonAnDetail(0,comboBoxMonAn.SelectedIndex == 0);
+                ma.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (dtgMonAn.SelectedRows.Count > 0)
+            {
+                string cell = comboBoxMonAn.SelectedIndex == 0 ? "MaMonAn" : "MaNuocUong";
+                int id_mon = Convert.ToInt32(dtgMonAn.SelectedRows[0].Cells[cell].Value);
+                MonAnDetail ma = new MonAnDetail(id_mon, comboBoxMonAn.SelectedIndex == 0);
+                ma.ShowDialog();
+            }
+        }
+
+        public void LoadNhanVien()
+        {
+            dtgvNhanVien.DataSource = BLL_NhanVien.Instance.getAllNhanVien();
+            dtgvNhanVien.Columns["Login"].Visible = false;
+        }
+        private void tabPage10_Enter(object sender, EventArgs e)
+        {
+            LoadNhanVien();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            AddCustomer staff = new AddCustomer(false, true);
+            staff.ShowDialog();
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (dtgvNhanVien.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dtgvNhanVien.SelectedRows[0].Cells["MaNhanVien"].Value);
+                AddCustomer staff = new AddCustomer(true, true, id);
+                staff.ShowDialog();
+            }
+            
+        }
+
+        private void dtgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

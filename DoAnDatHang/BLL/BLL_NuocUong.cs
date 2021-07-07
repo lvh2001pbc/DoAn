@@ -71,5 +71,37 @@ namespace DoAnDatHang.BLL
                 return false;
             }
         }
+
+        public void addFixNuocUong(NuocUong nuoc)
+        {
+            using( var db = new DoAnEntities())
+            {
+                if (db.NuocUongs.Find(nuoc.MaNuocUong) == null)
+                {
+                    db.NuocUongs.Add(nuoc);
+                    db.SaveChanges();
+                } else
+                {
+                    NuocUong temp = db.NuocUongs.Find(nuoc.MaNuocUong);
+                    temp.SoLuongCon = nuoc.SoLuongCon;
+                    temp.TenNuocUong = nuoc.TenNuocUong;
+                    temp.Gia = nuoc.Gia;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void deleteNuocUong(int ID)
+        {
+            using( var db = new DoAnEntities())
+            {
+                NuocUong tmp = db.NuocUongs.Find(ID);
+                if (tmp != null)
+                {
+                    db.NuocUongs.Remove(tmp);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

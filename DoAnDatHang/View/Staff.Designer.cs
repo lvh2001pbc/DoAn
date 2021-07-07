@@ -32,6 +32,9 @@ namespace DOAN
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnSortCustomer = new System.Windows.Forms.Button();
@@ -98,6 +101,21 @@ namespace DOAN
             this.yearFrom = new System.Windows.Forms.ComboBox();
             this.monthFrom = new System.Windows.Forms.ComboBox();
             this.comboDoanhthu = new System.Windows.Forms.ComboBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBoxMonAn = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dtgMonAn = new System.Windows.Forms.DataGridView();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dtgvNhanVien = new System.Windows.Forms.DataGridView();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.txtUpdate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -116,6 +134,14 @@ namespace DOAN
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_KH)).BeginInit();
@@ -131,9 +157,15 @@ namespace DOAN
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMonAn)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -141,6 +173,8 @@ namespace DOAN
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -545,6 +579,7 @@ namespace DOAN
             // 
             this.tabControl3.Controls.Add(this.tabPage6);
             this.tabControl3.Controls.Add(this.tabPage7);
+            this.tabControl3.Controls.Add(this.tabPage11);
             this.tabControl3.Location = new System.Drawing.Point(3, 2);
             this.tabControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl3.Name = "tabControl3";
@@ -884,6 +919,179 @@ namespace DOAN
             this.comboDoanhthu.TabIndex = 2;
             this.comboDoanhthu.SelectedIndexChanged += new System.EventHandler(this.comboDoanhthu_SelectedIndexChanged);
             // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.button2);
+            this.tabPage9.Controls.Add(this.comboBoxMonAn);
+            this.tabPage9.Controls.Add(this.button4);
+            this.tabPage9.Controls.Add(this.button5);
+            this.tabPage9.Controls.Add(this.button6);
+            this.tabPage9.Controls.Add(this.button7);
+            this.tabPage9.Controls.Add(this.dtgMonAn);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(1827, 750);
+            this.tabPage9.TabIndex = 4;
+            this.tabPage9.Text = "Món ăn & Đồ uống";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            this.tabPage9.Click += new System.EventHandler(this.tabPage9_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(851, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 26);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Chọn";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // comboBoxMonAn
+            // 
+            this.comboBoxMonAn.FormattingEnabled = true;
+            this.comboBoxMonAn.Items.AddRange(new object[] {
+            "Món ăn",
+            "Thức Uống"});
+            this.comboBoxMonAn.Location = new System.Drawing.Point(723, 4);
+            this.comboBoxMonAn.Name = "comboBoxMonAn";
+            this.comboBoxMonAn.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxMonAn.TabIndex = 19;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1445, 670);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(120, 50);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Cập nhật";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1445, 586);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(120, 50);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Xóa";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(1445, 500);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 50);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "Sửa";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1445, 412);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(120, 50);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Thêm";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // dtgMonAn
+            // 
+            this.dtgMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgMonAn.Location = new System.Drawing.Point(6, 70);
+            this.dtgMonAn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgMonAn.Name = "dtgMonAn";
+            this.dtgMonAn.RowHeadersWidth = 51;
+            this.dtgMonAn.RowTemplate.Height = 24;
+            this.dtgMonAn.Size = new System.Drawing.Size(1409, 657);
+            this.dtgMonAn.TabIndex = 10;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.button8);
+            this.tabPage10.Controls.Add(this.button9);
+            this.tabPage10.Controls.Add(this.button10);
+            this.tabPage10.Controls.Add(this.button11);
+            this.tabPage10.Controls.Add(this.button3);
+            this.tabPage10.Controls.Add(this.dtgvNhanVien);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(1827, 750);
+            this.tabPage10.TabIndex = 5;
+            this.tabPage10.Text = "Nhân viên";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            this.tabPage10.Enter += new System.EventHandler(this.tabPage10_Enter);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(1421, 645);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(120, 50);
+            this.button8.TabIndex = 25;
+            this.button8.Text = "Cập nhật";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(1421, 561);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 50);
+            this.button9.TabIndex = 24;
+            this.button9.Text = "Xóa";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(1421, 475);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 50);
+            this.button10.TabIndex = 23;
+            this.button10.Text = "Sửa";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(1421, 387);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(120, 50);
+            this.button11.TabIndex = 22;
+            this.button11.Text = "Thêm";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(669, 7);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 26);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Chọn";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // dtgvNhanVien
+            // 
+            this.dtgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvNhanVien.Location = new System.Drawing.Point(6, 38);
+            this.dtgvNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvNhanVien.Name = "dtgvNhanVien";
+            this.dtgvNhanVien.RowHeadersWidth = 51;
+            this.dtgvNhanVien.RowTemplate.Height = 24;
+            this.dtgvNhanVien.Size = new System.Drawing.Size(1409, 657);
+            this.dtgvNhanVien.TabIndex = 11;
+            this.dtgvNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvNhanVien_CellContentClick);
+            // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.txtUpdate);
@@ -892,7 +1100,7 @@ namespace DOAN
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1273, 508);
+            this.tabPage8.Size = new System.Drawing.Size(1827, 750);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Tài khoản";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1066,6 +1274,102 @@ namespace DOAN
             this.label9.TabIndex = 11;
             this.label9.Text = "Họ tên";
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.label19);
+            this.tabPage11.Controls.Add(this.dateTimePicker5);
+            this.tabPage11.Controls.Add(this.dateTimePicker6);
+            this.tabPage11.Controls.Add(this.label18);
+            this.tabPage11.Controls.Add(this.button12);
+            this.tabPage11.Controls.Add(this.comboBox3);
+            this.tabPage11.Controls.Add(this.chart2);
+            this.tabPage11.Location = new System.Drawing.Point(4, 25);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(1813, 723);
+            this.tabPage11.TabIndex = 2;
+            this.tabPage11.Text = "Món ăn";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // chart2
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(6, 97);
+            this.chart2.Name = "chart2";
+            series2.ChartArea = "ChartArea1";
+            series2.IsValueShownAsLabel = true;
+            series2.LabelBackColor = System.Drawing.Color.Yellow;
+            series2.LabelForeColor = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(1497, 626);
+            this.chart2.TabIndex = 11;
+            this.chart2.Text = "chart2";
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.Location = new System.Drawing.Point(124, 56);
+            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker5.TabIndex = 15;
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.CustomFormat = "MM";
+            this.dateTimePicker6.Location = new System.Drawing.Point(124, 24);
+            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker6.TabIndex = 16;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(63, 30);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(25, 17);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Từ";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(576, 24);
+            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(113, 32);
+            this.button12.TabIndex = 13;
+            this.button12.Text = "Cập nhật";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Theo ngày",
+            "Theo tháng",
+            "Theo năm"});
+            this.comboBox3.Location = new System.Drawing.Point(449, 27);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 24);
+            this.comboBox3.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(54, 56);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(34, 17);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Đến";
+            // 
             // Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1096,11 +1400,18 @@ namespace DOAN
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMonAn)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1192,5 +1503,28 @@ namespace DOAN
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBoxMonAn;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dtgMonAn;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dtgvNhanVien;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
