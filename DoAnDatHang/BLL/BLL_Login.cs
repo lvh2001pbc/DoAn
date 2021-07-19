@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,13 +21,25 @@ namespace DoAnDatHang.BLL
                 return _Instance;
             }
         }
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
         public Khach getKhach(Login login)
         {
             using (var db = new DoAnEntities())
             {
-                return db.Khaches.Find(login.Username);
+                db.Logins.Attach(login);
+                return login.Khaches.First();
             }
-            return null;
         }
         public NhanVien getNhanVien(Login login)
         {
@@ -35,7 +48,6 @@ namespace DoAnDatHang.BLL
                 Login log = db.Logins.Find(login.Username);
                 return log.NhanViens.Single();
             }
-            return null;
         }
         public Login getLoginByUsername(string username)
         {
@@ -65,7 +77,7 @@ namespace DoAnDatHang.BLL
             {
                 using( var db = new DoAnEntities())
                 {
-                    db.Logins.Add(login);
+                    db.Logins.Add(new Login {Username = login.Username, Password = MD5Hash(login.Password),ID_Role = login.ID_Role });
                     db.SaveChanges();
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnDatHang.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,22 @@ namespace DoAnDatHang.BLL
                 return _Instance;
             }
         }
-        public List<MonAn> getAllMonAn()
+        public List<MonAnView> getAllMonAnView()
         {
-            return db.MonAns.ToList();
+            using (var db1 = new DoAnEntities())
+            {
+                List<MonAnView> mon = new List<MonAnView>();
+                foreach (var i in db1.MonAns.ToList())
+                {
+                    mon.Add(new MonAnView
+                    {
+                        MaMonAn = i.MaMonAn,
+                        TenMonAn = i.TenMonAn,
+                        Gia = i.Gia
+                    });
+                }
+                return mon;
+            }
         }
         public MonAn getMonAnByID(int Id)
         {
@@ -82,6 +96,35 @@ namespace DoAnDatHang.BLL
             using (var db = new DoAnEntities())
             {
                 return db.MonAn_HDDatHang.Where(s => s.MaHDDHang == id).ToList();
+            }
+        }
+
+        public void addMonAn(MonAn mon)
+        {
+            using(var db = new DoAnEntities())
+            {
+                db.MonAns.Add(mon);
+                db.SaveChanges();
+            }
+        }
+
+        public void suaMonAn(int Id, MonAn sua)
+        {
+            using (var db = new DoAnEntities())
+            {
+                MonAn mon = db.MonAns.Find(Id);
+                mon.Gia = sua.Gia;
+                mon.TenMonAn = sua.TenMonAn;
+                db.SaveChanges();
+            }
+        }
+        public void xoaMonAn(int Id)
+        {
+            using (var db = new DoAnEntities())
+            {
+                MonAn mon = db.MonAns.Find(Id);
+                db.MonAns.Remove(mon);
+                db.SaveChanges();
             }
         }
     }

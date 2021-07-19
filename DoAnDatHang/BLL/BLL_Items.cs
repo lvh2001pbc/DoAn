@@ -25,13 +25,27 @@ namespace DoAnDatHang.BLL
         {
             using(var db = new DoAnEntities())
             {
-                return db.MonAn_HDDatHang.Where(s => s.MaHDDHang == ID).Select(s => new ItemView {
+                List<ItemView> monan = db.MonAn_HDDatHang.Where(s => s.MaHDDHang == ID).Select(s => new ItemView {
                     TenMonAn = s.MonAn.TenMonAn,
                     Gia = s.Gia,
                     SoLuong = s.SoLuong,
                     ThanhTien = s.Gia*s.SoLuong
                 }).ToList();
+                List<ItemView> nuocuong = db.NuocUong_HDDatHang.Where(s => s.MaHDDatHang == ID).Select(s => new ItemView
+                {
+                    TenMonAn = s.NuocUong.TenNuocUong,
+                    Gia = s.Gia,
+                    SoLuong = s.SoLuong,
+                    ThanhTien = s.Gia * s.SoLuong
+                }).ToList();
+                monan.AddRange(nuocuong);
+                return monan;
             }
+        }
+        public List<DrinkItemView> getAllDrinkViewbyHD(int ID)
+        {
+            using (var db = new DoAnEntities()) { }
+            return null;
         }
     }
 }

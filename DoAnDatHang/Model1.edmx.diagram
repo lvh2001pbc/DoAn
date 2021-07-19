@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="DoAnModel.NuocUong" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DoAnModel.NuocUong_HDDatHang" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="DoAnModel.FK_HDDatHang_Khach" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnModel.FK_HDDatHang_NhanVien" ManuallyRouted="false" />
         <AssociationConnector Association="DoAnModel.FK_MonAn_HDDatHang_HDDatHang" ManuallyRouted="false" />
         <AssociationConnector Association="DoAnModel.FK_NuocUong_HDDatHang_HDDatHang" ManuallyRouted="false" />
         <AssociationConnector Association="DoAnModel.FK_Khach_Login" ManuallyRouted="false" />

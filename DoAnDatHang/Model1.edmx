@@ -11,7 +11,6 @@
           </Key>
           <Property Name="MaHDDatHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaKhachHang" Type="int" Nullable="false" />
-          <Property Name="MaNhanVien" Type="int" Nullable="false" />
           <Property Name="ThoiGian" Type="datetime" Nullable="false" />
           <Property Name="ThanhTien" Type="money" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
@@ -24,7 +23,6 @@
           <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SDT" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SoDu" Type="money" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CMND" Type="int" Nullable="false" />
@@ -41,7 +39,7 @@
           <Key>
             <PropertyRef Name="MaMonAn" />
           </Key>
-          <Property Name="MaMonAn" Type="int" Nullable="false" />
+          <Property Name="MaMonAn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Gia" Type="money" Nullable="false" />
           <Property Name="TenMonAn" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -107,18 +105,6 @@
             </Principal>
             <Dependent Role="HDDatHang">
               <PropertyRef Name="MaKhachHang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HDDatHang_NhanVien">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="HDDatHang" Type="Self.HDDatHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="HDDatHang">
-              <PropertyRef Name="MaNhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -208,10 +194,6 @@
             <End Role="Khach" EntitySet="Khach" />
             <End Role="HDDatHang" EntitySet="HDDatHang" />
           </AssociationSet>
-          <AssociationSet Name="FK_HDDatHang_NhanVien" Association="Self.FK_HDDatHang_NhanVien">
-            <End Role="NhanVien" EntitySet="NhanVien" />
-            <End Role="HDDatHang" EntitySet="HDDatHang" />
-          </AssociationSet>
           <AssociationSet Name="FK_Khach_Login" Association="Self.FK_Khach_Login">
             <End Role="Login" EntitySet="Login" />
             <End Role="Khach" EntitySet="Khach" />
@@ -247,11 +229,9 @@
           </Key>
           <Property Name="MaHDDatHang" Type="Int32" Nullable="false" />
           <Property Name="MaKhachHang" Type="Int32" Nullable="false" />
-          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
           <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Khach" Relationship="Self.FK_HDDatHang_Khach" FromRole="HDDatHang" ToRole="Khach" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK_HDDatHang_NhanVien" FromRole="HDDatHang" ToRole="NhanVien" />
           <NavigationProperty Name="MonAn_HDDatHang" Relationship="Self.FK_MonAn_HDDatHang_HDDatHang" FromRole="HDDatHang" ToRole="MonAn_HDDatHang" />
           <NavigationProperty Name="NuocUong_HDDatHang" Relationship="Self.FK_NuocUong_HDDatHang_HDDatHang" FromRole="HDDatHang" ToRole="NuocUong_HDDatHang" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
@@ -264,7 +244,6 @@
           <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SoDu" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="HDDatHangs" Relationship="Self.FK_HDDatHang_Khach" FromRole="Khach" ToRole="HDDatHang" />
@@ -313,7 +292,6 @@
           <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="HDDatHangs" Relationship="Self.FK_HDDatHang_NhanVien" FromRole="NhanVien" ToRole="HDDatHang" />
           <NavigationProperty Name="Login" Relationship="Self.FK_NhanVien_Login" FromRole="NhanVien" ToRole="Login" />
           <Property Name="CMND" Type="Int32" Nullable="false" />
         </EntityType>
@@ -349,18 +327,6 @@
             </Principal>
             <Dependent Role="HDDatHang">
               <PropertyRef Name="MaKhachHang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HDDatHang_NhanVien">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="HDDatHang" Type="Self.HDDatHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="HDDatHang">
-              <PropertyRef Name="MaNhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -449,10 +415,6 @@
             <End Role="Khach" EntitySet="Khaches" />
             <End Role="HDDatHang" EntitySet="HDDatHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK_HDDatHang_NhanVien" Association="Self.FK_HDDatHang_NhanVien">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="HDDatHang" EntitySet="HDDatHangs" />
-          </AssociationSet>
           <AssociationSet Name="FK_MonAn_HDDatHang_HDDatHang" Association="Self.FK_MonAn_HDDatHang_HDDatHang">
             <End Role="HDDatHang" EntitySet="HDDatHangs" />
             <End Role="MonAn_HDDatHang" EntitySet="MonAn_HDDatHang" />
@@ -501,7 +463,6 @@
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MaHDDatHang" ColumnName="MaHDDatHang" />
                 <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
                 <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
               </MappingFragment>
@@ -515,7 +476,6 @@
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="SoDu" ColumnName="SoDu" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>

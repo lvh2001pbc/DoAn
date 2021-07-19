@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DOAN
@@ -13,6 +14,7 @@ namespace DOAN
     public partial class Staff : Form
     {
         int Id;
+        Thread a;
         public Staff(int id = 0)
         {
             InitializeComponent();
@@ -20,6 +22,63 @@ namespace DOAN
             LoadThongTin();
             ShowDon();
             LoadDay();
+            LoadCBB();
+            CheckNewDon();
+        }
+        public void LoadDtgvMonAn()
+        {
+            if (comboBoxMonAn.SelectedIndex == 0)
+                dtgMonAn.DataSource = BLL_MonAn.Instance.getAllMonAnView();
+            else dtgMonAn.DataSource = BLL_NuocUong.Instance.getAllNuocView();
+        }
+        public void LoadDtgvDon()
+        {
+            dtgvDon.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(true);
+            dtgvDon.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
+            dtgvDon.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
+            dtgvDon.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgvDon.Columns["ThoiGian"].HeaderText = "Thời gian";
+        }
+        public void LoadDtgvDonxacnhan()
+        {
+            dtgvDonxacnhan.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(false);
+            dtgvDonxacnhan.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
+            dtgvDonxacnhan.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
+            dtgvDonxacnhan.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgvDonxacnhan.Columns["ThoiGian"].HeaderText = "Thời gian";
+        }
+        public void CheckNewDon()
+        {
+            a = new Thread(() => {
+                int prev = BLL_HoaDon.Instance.getAllHoaDonView(false).Count;
+                while (true)
+                {
+                    Thread.Sleep(5000);
+                    int now = BLL_HoaDon.Instance.getAllHoaDonView(false).Count;
+                    if (now > prev)
+                    {
+                        ShowDon();
+                    }
+                }
+            });
+            a.Name = "Check";
+            a.IsBackground = true;
+            a.Start();
+        }
+
+
+        public void LoadKhach()
+        {
+            dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach();
+            dtgv_KH.Columns["MaKhachHang"].HeaderText = "Mã khách hàng";
+            dtgv_KH.Columns["HoTen"].HeaderText = "Họ tên";
+            dtgv_KH.Columns["DiaChi"].HeaderText = "Địa chỉ";
+            dtgv_KH.Columns["SDT"].HeaderText = "Số điện thoại";
+        }
+        public void LoadCBB()
+        {
+            comboBox2.Items.AddRange(new string[] { "Theo ngày", "Theo tổng tiền" });
+            comboBox1.Items.AddRange(new string[] { "Theo mã khách hàng", "Theo tên"});
         }
         public void LoadDay()
         {
@@ -34,8 +93,17 @@ namespace DOAN
         }
         public void ShowDon()
         {
-            dtgvDon.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(true);
-            dtgvDonxacnhan.DataSource = BLL_HoaDon.Instance.getAllHoaDonView(false);
+
+            if (dtgvDon.InvokeRequired)
+            {
+                dtgvDon.Invoke(new MethodInvoker(LoadDtgvDon));
+            }
+            else LoadDtgvDon();
+            if (dtgvDonxacnhan.InvokeRequired)
+            {
+                dtgvDonxacnhan.Invoke(new MethodInvoker(LoadDtgvDonxacnhan));
+            }
+            else LoadDtgvDonxacnhan();
         }
         public void LoadThongTin()
         {
@@ -44,6 +112,11 @@ namespace DOAN
             txtEmail.Text = staff.Email;
             txtAddress.Text = staff.DiaChi;
             txtSDT.Text = staff.SDT;
+            Login log = BLL_Login.Instance.getLoginByUsername(staff.Username);
+            if (log.ID_Role != 0)
+            {
+                tabControl1.TabPages.Remove(tabPage10);
+            }
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -53,33 +126,30 @@ namespace DOAN
 
         private void Staff_Load(object sender, EventArgs e)
         {
-            dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach();
-            dtgv_KH.Columns["MaKhachHang"].HeaderText = "Mã khách hàng";
-            dtgv_KH.Columns["HoTen"].HeaderText = "Họ tên";
-            dtgv_KH.Columns["DiaChi"].HeaderText = "Địa chỉ";
-            dtgv_KH.Columns["SDT"].HeaderText = "Số điện thoại";
-            dtgv_KH.Columns["SoDu"].HeaderText = "Số dư";
-            dtgv_KH.Columns["HDDatHangs"].Visible = false;
-            dtgv_KH.Columns["Login"].Visible = false;
+            LoadKhach();
         }
-        public void Show(string Name, int Id)
+        public void ShowKhach(string Name, int Id)
         {
-            List<Khach> khaches = BLL_KhachHang.Instance.getAllKhach().Where(s => s.HoTen.Contains(Name) && (s.MaKhachHang == Id || Id == 0)).ToList();
+            List<KhachView> khaches = BLL_KhachHang.Instance.getAllKhach().Where(s => s.HoTen.Contains(Name) && (s.MaKhachHang == Id || Id == 0)).ToList();
             dtgv_KH.DataSource = khaches;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             AddCustomer ad = new AddCustomer(false);
-            ad.reset += Show;
+            ad.reset += ShowKhach;
             ad.ShowDialog();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            AddCustomer edit = new AddCustomer(true);
-            edit.reset += Show;
-            edit.ShowDialog();
+            if (dtgv_KH.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dtgv_KH.SelectedRows[0].Cells["MaKhachHang"].Value);
+                AddCustomer edit = new AddCustomer(true,false,Id);
+                edit.reset += ShowKhach;
+                edit.ShowDialog();
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -103,7 +173,8 @@ namespace DOAN
         {
             if (dtgvDon.SelectedRows.Count > 0)
             {
-                OrderDetail od = new OrderDetail(Convert.ToInt32(dtgvDon.SelectedRows[0].Cells["MaHoaDon"].Value));
+                int id = Convert.ToInt32(dtgvDon.SelectedRows[0].Cells["MaHoaDon"].Value);
+                OrderDetail od = new OrderDetail(id);
                 od.ShowDialog();
             }
         }
@@ -111,11 +182,23 @@ namespace DOAN
         private void btnUpdatdonhang_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = BLL_HoaDon.Instance.getHoaDonViewByTime(dateTimePicker1.Value, dateTimePicker2.Value);
+            dataGridView1.Columns["MaHoaDon"].HeaderText = "Mã hoá đơn";
+            dataGridView1.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
+            dataGridView1.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dataGridView1.Columns["ThoiGian"].HeaderText = "Thời gian";
+            txtTongdon.Text = dataGridView1.Rows.Count.ToString();
+            int sum = 0;
+            foreach (DataGridViewRow i in dataGridView1.Rows)
+            {
+                sum += Convert.ToInt32(i.Cells["ThanhTien"].Value);
+            }
+            txtThanhtienDon.Text = sum.ToString();
         }
 
         private void btnAdđon_Click(object sender, EventArgs e)
         {
             AddOrder a = new AddOrder();
+            a.a += ShowDon;
             a.ShowDialog();
         }
 
@@ -209,11 +292,25 @@ namespace DOAN
         private void btnUpdateDon_Click(object sender, EventArgs e)
         {
             ShowDon();
+            dtgvDon.DataSource = BLL_HoaDon.Instance.getHoaDonViewByTime(dateTimePicker4.Value, dateTimePicker3.Value);
         }
 
         private void btnSortdon_Click(object sender, EventArgs e)
         {
-
+            List<HoaDonView> a;
+            if (txtDon.TextLength > 0)
+            {
+                int Id = Convert.ToInt32(txtDon.Text);
+                a = BLL_HoaDon.Instance.GetHoaDonViewContainsID(Id, true);
+            }
+            else
+            {
+                a = BLL_HoaDon.Instance.getAllHoaDonView(true);
+            }
+            if (comboBox1.SelectedIndex == 1) a.Sort(HoaDonView.CompareByNgay);
+            else a.Sort(HoaDonView.CompareByTongTien);
+            DateTime to = dateTimePicker2.Value.AddDays(1);
+            dtgvDon.DataSource = a.Select(s => s.ThoiGian.CompareTo(dateTimePicker1.Value) >= 0 && s.ThoiGian.CompareTo(to) <= 0);
         }
 
         private void btnSuaDonXacNhan_Click(object sender, EventArgs e)
@@ -224,6 +321,114 @@ namespace DOAN
                 AddOrder a = new AddOrder(mahoadon);
                 a.ShowDialog();
             }
+        }
+
+        private void btnSearchKH_Click(object sender, EventArgs e)
+        {
+            if (txt_SearchKH.Text.Length > 0)
+            {
+                dtgv_KH.DataSource = BLL_KhachHang.Instance.getKhach(Convert.ToInt32(txt_SearchKH.Text), txtSearchName.Text);
+            }
+            else
+                dtgv_KH.DataSource = BLL_KhachHang.Instance.getAllKhach().Where(s => s.HoTen.Contains(txtSearchName.Text)).ToList();
+        }
+
+        private void btnSearchHD_Click(object sender, EventArgs e)
+        {
+            if (txtDon.TextLength > 0)
+            {
+                int Id = Convert.ToInt32(txtDon.Text);
+                dtgvDon.DataSource = BLL_HoaDon.Instance.getHoaDonViewByTime(dateTimePicker4.Value, dateTimePicker3.Value).Where(s => s.MaHoaDon.ToString().Contains(Id.ToString()));
+            }
+            else
+            {
+                ShowDon();
+            }
+        }
+
+        private void btnSortCustomer_Click(object sender, EventArgs e)
+        {
+            List<KhachView> a;
+            if (txt_SearchKH.Text.Length > 0)
+            {
+                a = BLL_KhachHang.Instance.getKhach(Convert.ToInt32(txt_SearchKH.Text), txtSearchName.Text);
+            }
+            else
+                a = BLL_KhachHang.Instance.getAllKhach();
+            if (comboBox1.SelectedIndex == 1) a.Sort(KhachView.CompareByMa);
+            else a.Sort(KhachView.CompareByTen);
+            dtgv_KH.DataSource = a;
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (dtgMonAn.SelectedRows.Count > 0)
+            {
+                string cell = comboBoxMonAn.SelectedIndex == 0 ? "MaMonAn" : "MaNuocUong";
+                int id_mon = Convert.ToInt32(dtgMonAn.SelectedRows[0].Cells[cell].Value);
+                if (comboBoxMonAn.SelectedIndex == 0) BLL_MonAn.Instance.xoaMonAn(id_mon);
+                else BLL_NuocUong.Instance.deleteNuocUong(id_mon);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadDtgvMonAn();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+                MonAnDetail ma = new MonAnDetail(0,comboBoxMonAn.SelectedIndex == 0);
+                ma.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (dtgMonAn.SelectedRows.Count > 0)
+            {
+                string cell = comboBoxMonAn.SelectedIndex == 0 ? "MaMonAn" : "MaNuocUong";
+                int id_mon = Convert.ToInt32(dtgMonAn.SelectedRows[0].Cells[cell].Value);
+                MonAnDetail ma = new MonAnDetail(id_mon, comboBoxMonAn.SelectedIndex == 0);
+                ma.ShowDialog();
+            }
+        }
+
+        public void LoadNhanVien()
+        {
+            dtgvNhanVien.DataSource = BLL_NhanVien.Instance.getAllNhanVien();
+            dtgvNhanVien.Columns["Login"].Visible = false;
+        }
+        private void tabPage10_Enter(object sender, EventArgs e)
+        {
+            LoadNhanVien();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            AddCustomer staff = new AddCustomer(false, true);
+            staff.ShowDialog();
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (dtgvNhanVien.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dtgvNhanVien.SelectedRows[0].Cells["MaNhanVien"].Value);
+                AddCustomer staff = new AddCustomer(true, true, id);
+                staff.ShowDialog();
+            }
+            
+        }
+
+        private void dtgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

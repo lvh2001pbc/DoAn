@@ -48,12 +48,24 @@ namespace DoAnDatHang.BLL
                 return db.HDDatHangs.Where(s => s.TrangThai == trangthai).Select(s => new HoaDonView {
                     MaHoaDon = s.MaHDDatHang,
                     TenKhachHang = s.Khach.HoTen,
-                    TenNhanVien = s.NhanVien.HoTen,
                     ThoiGian = s.ThoiGian,
                     ThanhTien = s.ThanhTien,
                     //TrangThai = s.TrangThai
                 }).ToList();
 
+            }
+        }
+        public List<HoaDonView> GetHoaDonViewContainsID(int id,bool trangthai)
+        {
+            using (var db = new DoAnEntities())
+            {
+                return db.HDDatHangs.Where(s => s.MaHDDatHang.ToString().Contains(id.ToString()) && s.TrangThai == trangthai).Select(s => new HoaDonView
+                {
+                    MaHoaDon = s.MaHDDatHang,
+                    TenKhachHang = s.Khach.HoTen,
+                    ThoiGian = s.ThoiGian,
+                    ThanhTien = s.ThanhTien
+                }).ToList();
             }
         }
         public List<HoaDonView> getHoaDonViewByTime(DateTime from, DateTime to)
@@ -65,7 +77,6 @@ namespace DoAnDatHang.BLL
                 {
                     MaHoaDon = s.MaHDDatHang,
                     TenKhachHang = s.Khach.HoTen,
-                    TenNhanVien = s.NhanVien.HoTen,
                     ThoiGian = s.ThoiGian,
                     ThanhTien = s.ThanhTien,
                     //TrangThai = s.TrangThai
