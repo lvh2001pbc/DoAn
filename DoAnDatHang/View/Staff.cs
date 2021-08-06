@@ -430,5 +430,10 @@ namespace DOAN
         {
 
         }
+
+        private void dtgv_KH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

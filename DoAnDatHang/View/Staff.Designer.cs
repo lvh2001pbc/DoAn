@@ -101,6 +101,14 @@ namespace DOAN
             this.yearFrom = new System.Windows.Forms.ComboBox();
             this.monthFrom = new System.Windows.Forms.ComboBox();
             this.comboDoanhthu = new System.Windows.Forms.ComboBox();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBoxMonAn = new System.Windows.Forms.ComboBox();
@@ -134,14 +142,6 @@ namespace DOAN
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_KH)).BeginInit();
@@ -157,6 +157,8 @@ namespace DOAN
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMonAn)).BeginInit();
             this.tabPage10.SuspendLayout();
@@ -164,8 +166,6 @@ namespace DOAN
             this.tabPage8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -313,6 +313,7 @@ namespace DOAN
             this.dtgv_KH.RowTemplate.Height = 24;
             this.dtgv_KH.Size = new System.Drawing.Size(1409, 657);
             this.dtgv_KH.TabIndex = 0;
+            this.dtgv_KH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_KH_CellContentClick);
             // 
             // tabPage2
             // 
@@ -919,6 +920,102 @@ namespace DOAN
             this.comboDoanhthu.TabIndex = 2;
             this.comboDoanhthu.SelectedIndexChanged += new System.EventHandler(this.comboDoanhthu_SelectedIndexChanged);
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.label19);
+            this.tabPage11.Controls.Add(this.dateTimePicker5);
+            this.tabPage11.Controls.Add(this.dateTimePicker6);
+            this.tabPage11.Controls.Add(this.label18);
+            this.tabPage11.Controls.Add(this.button12);
+            this.tabPage11.Controls.Add(this.comboBox3);
+            this.tabPage11.Controls.Add(this.chart2);
+            this.tabPage11.Location = new System.Drawing.Point(4, 25);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(1813, 723);
+            this.tabPage11.TabIndex = 2;
+            this.tabPage11.Text = "Món ăn";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(54, 56);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(34, 17);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Đến";
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.Location = new System.Drawing.Point(124, 56);
+            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker5.TabIndex = 15;
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.CustomFormat = "MM";
+            this.dateTimePicker6.Location = new System.Drawing.Point(124, 24);
+            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker6.TabIndex = 16;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(63, 30);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(25, 17);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Từ";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(576, 24);
+            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(113, 32);
+            this.button12.TabIndex = 13;
+            this.button12.Text = "Cập nhật";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Theo ngày",
+            "Theo tháng",
+            "Theo năm"});
+            this.comboBox3.Location = new System.Drawing.Point(449, 27);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 24);
+            this.comboBox3.TabIndex = 12;
+            // 
+            // chart2
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(6, 97);
+            this.chart2.Name = "chart2";
+            series2.ChartArea = "ChartArea1";
+            series2.IsValueShownAsLabel = true;
+            series2.LabelBackColor = System.Drawing.Color.Yellow;
+            series2.LabelForeColor = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(1497, 626);
+            this.chart2.TabIndex = 11;
+            this.chart2.Text = "chart2";
+            // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.button2);
@@ -1274,102 +1371,6 @@ namespace DOAN
             this.label9.TabIndex = 11;
             this.label9.Text = "Họ tên";
             // 
-            // tabPage11
-            // 
-            this.tabPage11.Controls.Add(this.label19);
-            this.tabPage11.Controls.Add(this.dateTimePicker5);
-            this.tabPage11.Controls.Add(this.dateTimePicker6);
-            this.tabPage11.Controls.Add(this.label18);
-            this.tabPage11.Controls.Add(this.button12);
-            this.tabPage11.Controls.Add(this.comboBox3);
-            this.tabPage11.Controls.Add(this.chart2);
-            this.tabPage11.Location = new System.Drawing.Point(4, 25);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(1813, 723);
-            this.tabPage11.TabIndex = 2;
-            this.tabPage11.Text = "Món ăn";
-            this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // chart2
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(6, 97);
-            this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.IsValueShownAsLabel = true;
-            series2.LabelBackColor = System.Drawing.Color.Yellow;
-            series2.LabelForeColor = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(1497, 626);
-            this.chart2.TabIndex = 11;
-            this.chart2.Text = "chart2";
-            // 
-            // dateTimePicker5
-            // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(124, 56);
-            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker5.TabIndex = 15;
-            // 
-            // dateTimePicker6
-            // 
-            this.dateTimePicker6.CustomFormat = "MM";
-            this.dateTimePicker6.Location = new System.Drawing.Point(124, 24);
-            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker6.TabIndex = 16;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(63, 30);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(25, 17);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "Từ";
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(576, 24);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(113, 32);
-            this.button12.TabIndex = 13;
-            this.button12.Text = "Cập nhật";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Theo ngày",
-            "Theo tháng",
-            "Theo năm"});
-            this.comboBox3.Location = new System.Drawing.Point(449, 27);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 12;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(54, 56);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(34, 17);
-            this.label19.TabIndex = 17;
-            this.label19.Text = "Đến";
-            // 
             // Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1400,6 +1401,9 @@ namespace DOAN
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.tabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgMonAn)).EndInit();
             this.tabPage10.ResumeLayout(false);
@@ -1409,9 +1413,6 @@ namespace DOAN
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage11.ResumeLayout(false);
-            this.tabPage11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
 
         }
